@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Articles } from "./components/Articles";
+import Footers from "./components/Footers";
+import { HeroSection } from "./components/HeroSection";
+import { Navigation } from "./components/Navigation";
+import { WhySection } from "./components/WhySection";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    React.useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in",
+        });
+        AOS.refresh();
+    }, []);
+    return (
+        <>
+            <div>
+                <Navigation />
+                <HeroSection />
+                <WhySection />
+                <Articles />
+            </div>
+            <Footers />
+        </>
+    );
 }
 
 export default App;
